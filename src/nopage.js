@@ -1,10 +1,8 @@
-function Nopage () {
-    return (
-    <>
-    <h1>Page Note Found 404</h1>;
-    </>
-    )
+function Nopage (props) {
+  return <label>Hello, {props.value}</label>;
   };
+
+  
   
   export default Nopage;
 
