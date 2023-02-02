@@ -1,34 +1,52 @@
 import React from 'react';
-// import ReactDOM from 'react-router-dom';
 import AboutPage  from '../about';
 import { Link, Route ,Routes } from 'react-router-dom';
  import HomePage from '../home';
 import ContactPage from '../contact';
 import Nopage from '../nopage';
 import Mainfun from './Main';
+import Todo from '../component/Todo';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { LinkContainer } from 'react-router-bootstrap';
+
 
 function Navbarfun() {
   return (
     <>
-    
-    <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      </nav>
+
+
+<Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand href="#home">React Task</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+          <LinkContainer to="/">
+            <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/about">
+            <Nav.Link>About</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/contact">
+            <Nav.Link>Contact</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/todo">
+            <Nav.Link>Todo</Nav.Link>
+            </LinkContainer>
+            
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
       <Routes>
       <Route path='/' element={<HomePage/>} />
       <Route path='/about' element={<AboutPage/>} />
       <Route path='/contact' element={<ContactPage/>} />
       <Route path="/id/:id" element={ <Mainfun/>}/>
+      <Route path="/todo" element={ <Todo/>}/>
       <Route path='/*' element={<Nopage value="page not found" /> } />
       </Routes>
     </>
