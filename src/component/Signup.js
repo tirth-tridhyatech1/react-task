@@ -73,7 +73,7 @@ function Signup(props) {
 
 
         const cb = document.querySelector('#accept');
-        console.log(cb.checked); 
+        
         if(cb.checked){
             setCheckerr(true);
             check = "checked";
