@@ -10,6 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
+import Signup from './Signup';
 
 
 function Navbarfun() {
@@ -35,6 +36,9 @@ function Navbarfun() {
             <LinkContainer to="/todo">
             <Nav.Link>Todo</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/signup">
+            <Nav.Link>Sighup</Nav.Link>
+            </LinkContainer>
             
           </Nav>
         </Navbar.Collapse>
@@ -47,6 +51,7 @@ function Navbarfun() {
       <Route path='/contact' element={<ContactPage/>} />
       <Route path="/id/:id" element={ <Mainfun/>}/>
       <Route path="/todo" element={ <Todo/>}/>
+      <Route path="/signup" element={ <Signup/>}/>
       <Route path='/*' element={<Nopage value="page not found" /> } />
       </Routes>
     </>

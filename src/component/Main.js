@@ -12,4 +12,4 @@ function Mainfun(props) {
   )
   
 }
-export default Mainfun
+export default Mainfun;
