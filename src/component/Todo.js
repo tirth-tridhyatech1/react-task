@@ -20,6 +20,10 @@ function Todo() {
         setTodo("")
     }
 
+    function editdata(){
+        setEditingText()
+    }
+
     function deleteTodo(id) {
         const updatedTodos = [...todos].filter((todo) => todo.id !== id)
 
@@ -36,6 +40,8 @@ function Todo() {
 
         setTodos(updatedTodos)
     }
+
+   
 
     function editTodo(id) {
         const updatedTodos = [...todos].map((todo) => {
@@ -57,15 +63,14 @@ function Todo() {
             </form>
             {todos.map((todo) => <div key={todo.id}>
 
-                {todoEditing === todo.id ? (<input type="text" onChange={(e) => setEditingText(e.target.value)} value={editingText} />) : (<div>{todo.text}</div>)}
-                <input type="checkbox" onChange={() => toggleComplete(todo.id)} checked={todo.completed} /> 
+                {todoEditing === todo.id ? (<input type="text" defaultValue={todo.text} onChange={(e) => setEditingText(e.target.value) }  />) : (<div>{todo.text}</div>)}
+                <input type="checkbox" onChange={() => toggleComplete(todo.id) } checked={todo.completed} /> 
                 <button onClick={() => deleteTodo(todo.id)}>Delete</button>
                 
 
       
                 {todoEditing === todo.id ? (<button onClick={() => editTodo(todo.id)}>Submit Edits</button> ) :
                ( <button onClick={() => setTodoEditing(todo.id)}> Edit</button>) }
-
             </div>)}
         </div>
     )
