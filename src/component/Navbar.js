@@ -11,6 +11,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import Signup from './Signup';
+import Userdetails from './Userdetails';
 
 
 function Navbarfun() {
@@ -20,7 +21,7 @@ function Navbarfun() {
 
 <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">React Task</Navbar.Brand>
+        <Navbar.Brand href="/">React Task</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -37,7 +38,10 @@ function Navbarfun() {
             <Nav.Link>Todo</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/signup">
-            <Nav.Link>Sighup</Nav.Link>
+            <Nav.Link>Signup</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/userdetail">
+            <Nav.Link>User Details</Nav.Link>
             </LinkContainer>
             
           </Nav>
@@ -52,6 +56,7 @@ function Navbarfun() {
       <Route path="/id/:id" element={ <Mainfun/>}/>
       <Route path="/todo" element={ <Todo/>}/>
       <Route path="/signup" element={ <Signup/>}/>
+      <Route path="/userdetail" element={<Userdetails/>}/>
       <Route path='/*' element={<Nopage value="page not found" /> } />
       </Routes>
     </>

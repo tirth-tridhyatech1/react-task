@@ -17,13 +17,13 @@ function Signup(props) {
     });
     
     
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    let    [gender ,setGender] = useState('');
-    const [address, setAddress] = useState('');
-    const [phoneNumber, setPhone] = useState('');
-    const [password , setPassword] = useState('');
-    let [check ,setCheck] = useState('');
+    // const [lastName, setLastName] = useState('');
+    // const [email, setEmail] = useState('');
+    // let    [gender ,setGender] = useState('');
+    // const [address, setAddress] = useState('');
+    // const [phoneNumber, setPhone] = useState('');
+    // const [password , setPassword] = useState('');
+    // let [check ,setCheck] = useState('');
 
     // error variable
     const [errfirstName, setFirstNameerr] = useState(false);
@@ -97,7 +97,7 @@ function Signup(props) {
     }}
 
     function onlastname (){
-        if(lastName.length=== 0 || lastName  ===  " ")
+        if(user.lastName.length=== 0 || user.lastName  ===  " ")
         {
             setLastNameerr(true);
         }
@@ -119,14 +119,14 @@ function Signup(props) {
     }
 
     function onaddress (){
-        if(address.length=== 0 || address  ===  " ")
+        if(user.address.length=== 0 || user.address  ===  " ")
         {
             setAddresserr(true);
         }
     }
 
     function onphone (){
-        if(phoneNumber.length=== 0 || phoneNumber  ===  " ")
+        if(user.phoneNumber.length=== 0 || user.phoneNumber  ===  " ")
         {
             setPhoneerr(true);
         }
@@ -139,7 +139,7 @@ function Signup(props) {
     }
 
     function onpass (){
-        if(password.length=== 0 || password  ===  " "  || password.length >8)
+        if(user.password.length=== 0 || user.password  ===  " "  || user.password.length >8)
         {
             setPassworderr(true);
         }
@@ -150,7 +150,7 @@ function Signup(props) {
         
         if(cb.checked == true){
             setCheckerr(true);
-            check = "checked";
+            
             setUser({...user, check : "Checked"})
         }
         else{
@@ -250,7 +250,7 @@ function Signup(props) {
             <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"onChange={handelcontrol} />
             <label className="form-check-label" for="inlineRadio3">Other</label>
             </div>
-            {errgender&&gender.length==0?
+            {errgender&&user.gender.length==0?
             <Form.Label className='text-danger'>Please Select a Gender</Form.Label>:""}
           </Form.Group>
 
@@ -264,7 +264,7 @@ function Signup(props) {
 
       <Form.Group className="mb-3" controlId="phone">
             <Form.Label>Phone Number</Form.Label>
-            <Form.Control type="phone" name='phoneNumber' onBlur={onphone} onChange={handleInputs} placeholder="Phone Number" maxlength="10" />
+            <Form.Control type="phone" name='phoneNumber' onBlur={onphone} onChange={handleInputs} placeholder="Phone Number" maxLength="10" />
             {errphoneNumber&&user.phoneNumber.length==0?
             <Form.Label className='text-danger'>Please Enter The Phone Number</Form.Label>:""}
           </Form.Group>
@@ -281,7 +281,7 @@ function Signup(props) {
 
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" onChange={oncheked} id="accept" label="Check me out" />
-            {!errcheck&&check.length==0?
+            {!errcheck||user.check.length==0?
             <Form.Label className='text-danger'>Please Chcek the checkbox</Form.Label>:""}
           </Form.Group>
           <Button variant="primary" type="submit">
