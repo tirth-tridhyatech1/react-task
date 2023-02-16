@@ -1,5 +1,5 @@
 import Table from 'react-bootstrap/Table';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -8,6 +8,8 @@ function Userdetails() {
     
 
   const [isedit, setisedit] = useState(false);
+  const [isvalid,setIsvalid] = useState(false);
+  
 
   const [user, setUser] = useState({
     firstName:"Tirth",
@@ -35,13 +37,16 @@ const [errfirstName, setFirstNameerr] = useState(false);
       if(user.firstName.length== 0 || user.firstName  ==  " ")
       {
           setFirstNameerr(true);
+         
       }}
   
       function onlastname (){
           if(user.lastName.length=== 0 || user.lastName  ===  " ")
           {
               setLastNameerr(true);
+             
           }
+          
       }
   
       function onemail (){
@@ -81,7 +86,7 @@ const [errfirstName, setFirstNameerr] = useState(false);
   
       function onpass (){
           if(user.password.length=== 0 || user.password  ===  " "  || user.password.length >8)
-          {
+          { 
               setPassworderr(true);
           }
       }
@@ -97,6 +102,9 @@ const [errfirstName, setFirstNameerr] = useState(false);
           }
   
       }
+
+
+      
     // validation code end
 
 
@@ -115,7 +123,7 @@ const [errfirstName, setFirstNameerr] = useState(false);
     const handleInputs = (e) =>{
       // console.log(user,38);
       e.preventDefault();
-       setUser({...user, [e.target.name] : e.target.checked})
+      //  setUser({...user, [e.target.name] : e.target.checked})
        setUser({...user,[e.target.name] : e.target.value})
       //  setUser({[user.check]:e.target.checked})
        //console.log(e.target.value,44)
@@ -124,13 +132,13 @@ const [errfirstName, setFirstNameerr] = useState(false);
   const hanlechcek = e =>{
     e.preventDefault();
     setUser({...user, [e.target.name] : e.target.checked})
-    
+    oncheked();
   }
   console.log(user);
 
     return (
       <>
-      <Button variant="primary" type="button" onClick={onedit}>edit</Button>
+      
       
       <div className="container">
         <Form className='border rounded border-primary  p-3' onSubmit={handleInputs}  >
@@ -164,20 +172,21 @@ const [errfirstName, setFirstNameerr] = useState(false);
 
             
           </Form.Group>
-
+            
+         
           <Form.Group className="mb-3" controlId="radiobutton">
           {isedit?
           <>
           <Form.Label className='px-2'>Gender</Form.Label>
+          
             <div className="form-check form-check-inline">
-            {user.gender =="MALE"?
-            <input className="form-check-input" type="radio"defaultChecked={true}  onChange={handleInputs} name="gender" id="inlineRadio1" value="MALE" />:
-            <input className="form-check-input" type="radio"  onChange={handleInputs} name="gender" id="inlineRadio1" value="MALE" />
-          }
+            {user.gender ==="MALE"?
+            <input className="form-check-input" type="radio" defaultChecked={true} onChange={handleInputs} name="gender" id="inlineRadio1" value="MALE"  />:
+            <input className="form-check-input" type="radio"  onChange={handleInputs} name="gender" id="inlineRadio1" value="MALE"/>}
             <label className="form-check-label" for="inlineRadio1">Male</label>
             </div>
             <div className="form-check form-check-inline">
-            {user.gender =="FEMALE"?
+            {user.gender ==="FEMALE"?
             <input className="form-check-input" type="radio" defaultChecked={true} onChange={handleInputs} name="gender" id="inlineRadio2" value="FEMALE"  />:
             <input className="form-check-input" type="radio"  onChange={handleInputs} name="gender" id="inlineRadio2" value="FEMALE"  />}
             <label className="form-check-label" for="inlineRadio2">Female</label>
@@ -192,7 +201,7 @@ const [errfirstName, setFirstNameerr] = useState(false);
             {errgender&&user.gender.length==0?
             <Form.Label className='text-danger'>Please Select a Gender</Form.Label>:""}
           </Form.Group>
-
+        
           
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Address</Form.Label>
@@ -226,13 +235,13 @@ const [errfirstName, setFirstNameerr] = useState(false);
 
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
             {isedit?
-            <Form.Check type="checkbox" name='check' defaultChecked={user.check} onChange={hanlechcek}  id="accept" label="Check me out" onClick={oncheked} />:
+            <Form.Check type="checkbox" name='check' defaultChecked={user.check}  onChange={hanlechcek}  id="accept" label="Check me out" />:
             <Form.Label className='text'>checked : {user.check.toString()}</Form.Label>}
-            {!user.check?
+            {!user.check&& isedit==true?
             <Form.Label className='text-danger'>Please Chcek the checkbox</Form.Label>:""}
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={onedit} >
-            Submit
+          <Button variant="primary" disabled={isvalid} type="submit" onClick={onedit} >
+          {isedit == false?"Update":"Submit"}
           </Button>
         </Form>
       
@@ -244,3 +253,5 @@ const [errfirstName, setFirstNameerr] = useState(false);
   
 }
 export default Userdetails;
+
+

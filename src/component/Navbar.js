@@ -12,6 +12,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import Signup from './Signup';
 import Userdetails from './Userdetails';
+import Newtodo from './Newtodo';
 
 
 function Navbarfun() {
@@ -43,6 +44,9 @@ function Navbarfun() {
             <LinkContainer to="/userdetail">
             <Nav.Link>User Details</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/newtodo">
+            <Nav.Link>Todo using UseReducer</Nav.Link>
+            </LinkContainer>
             
           </Nav>
         </Navbar.Collapse>
@@ -57,6 +61,7 @@ function Navbarfun() {
       <Route path="/todo" element={ <Todo/>}/>
       <Route path="/signup" element={ <Signup/>}/>
       <Route path="/userdetail" element={<Userdetails/>}/>
+      <Route path="/newtodo" element={<Newtodo/>}/>
       <Route path='/*' element={<Nopage value="page not found" /> } />
       </Routes>
     </>

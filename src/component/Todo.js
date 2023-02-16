@@ -70,7 +70,7 @@ function Todo() {
 
       
                 {todoEditing === todo.id ? (<button onClick={() => editTodo(todo.id)}>Submit Edits</button> ) :
-               ( <button onClick={() => setTodoEditing(todo.id)}> Edit</button>) }
+               ( <button onClick={() => setTodoEditing(todo.id)}>Edit</button>) }
             </div>)}
         </div>
     )
