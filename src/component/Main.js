@@ -6,9 +6,7 @@ function Mainfun(props) {
     return (
       <>
          <h1>This is dynamic url example :{id}</h1>  
-        
-      </>
-      
+      </>   
   )
   
 }

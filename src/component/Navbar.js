@@ -13,6 +13,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Signup from './Signup';
 import Userdetails from './Userdetails';
 import Newtodo from './Newtodo';
+import Reactform from './Reactform';
 
 
 function Navbarfun() {
@@ -47,6 +48,10 @@ function Navbarfun() {
             <LinkContainer to="/newtodo">
             <Nav.Link>Todo using UseReducer</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/reactform">
+            <Nav.Link>React Form</Nav.Link>
+            </LinkContainer>
+
             
           </Nav>
         </Navbar.Collapse>
@@ -62,11 +67,11 @@ function Navbarfun() {
       <Route path="/signup" element={ <Signup/>}/>
       <Route path="/userdetail" element={<Userdetails/>}/>
       <Route path="/newtodo" element={<Newtodo/>}/>
+      <Route path="/reactform" element={<Reactform/>} />
       <Route path='/*' element={<Nopage value="page not found" /> } />
       </Routes>
     </>
   )
-  
 }
 
 export default Navbarfun;
