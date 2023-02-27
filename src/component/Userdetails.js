@@ -179,23 +179,17 @@ const [errfirstName, setFirstNameerr] = useState(false);
           <>
           <Form.Label className='px-2'>Gender</Form.Label>
           
-            <div className="form-check form-check-inline">
-            {user.gender ==="MALE"?
-            <input className="form-check-input" type="radio" defaultChecked={true} onChange={handleInputs} name="gender" id="inlineRadio1" value="MALE"  />:
-            <input className="form-check-input" type="radio"  onChange={handleInputs} name="gender" id="inlineRadio1" value="MALE"/>}
-            <label className="form-check-label" for="inlineRadio1">Male</label>
+            <div className="form-check form-check-inline">  
+            <input className="form-check-input" type="radio" defaultChecked={user.gender ==="MALE"}onChange={handleInputs} name="gender" id="inlineRadio1" value="MALE"  />
+            <label className="form-check-label" htmlFor="inlineRadio1">Male</label>
             </div>
             <div className="form-check form-check-inline">
-            {user.gender ==="FEMALE"?
-            <input className="form-check-input" type="radio" defaultChecked={true} onChange={handleInputs} name="gender" id="inlineRadio2" value="FEMALE"  />:
-            <input className="form-check-input" type="radio"  onChange={handleInputs} name="gender" id="inlineRadio2" value="FEMALE"  />}
-            <label className="form-check-label" for="inlineRadio2">Female</label>
+            <input className="form-check-input" type="radio" defaultChecked={user.gender ==="FEMALE"} onChange={handleInputs} name="gender" id="inlineRadio2" value="FEMALE"  />
+            <label className="form-check-label" htmlFor="inlineRadio2">Female</label>
             </div>
             <div className="form-check form-check-inline">
-            {user.gender =="OTHER"?
-            <input className="form-check-input" type="radio" defaultChecked={true} onChange={handleInputs} name="gender" id="inlineRadio3" value="OTHER"  />:
-            <input className="form-check-input" type="radio"  onChange={handleInputs} name="gender" id="inlineRadio3" value="OTHER"  />}
-            <label className="form-check-label" for="inlineRadio3">Other</label>
+            <input className="form-check-input" type="radio" defaultChecked={user.gender ==="OTHER"} onChange={handleInputs} name="gender" id="inlineRadio3" value="OTHER"  />
+            <label className="form-check-label" htmlFor="inlineRadio3">Other</label>
             </div></> :
             <Form.Label className='text'>Gender : {user.gender}</Form.Label>}
             {errgender&&user.gender.length==0?
